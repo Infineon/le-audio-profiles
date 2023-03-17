@@ -1,5 +1,5 @@
 /*
- * Copyright 2022, Cypress Semiconductor Corporation (an Infineon company) or
+ * Copyright 2023, Cypress Semiconductor Corporation (an Infineon company) or
  * an affiliate of Cypress Semiconductor Corporation.  All rights reserved.
  *
  * This software, including source code, documentation and related
@@ -50,8 +50,8 @@ extern "C"
 #include "wiced_bt_ga_tbs_common.h"
 #include "wiced_bt_ga_common.h"
 
-#define TBS_TRACE(...)
-#define TBS_TRACE_CRIT(...)
+#define TBS_TRACE(...) WICED_BT_TRACE(__VA_ARGS__)
+#define TBS_TRACE_CRIT(...) WICED_BT_TRACE(__VA_ARGS__)
 
 /**
  * @addtogroup Telephone_Bearer_Service_APIs
@@ -98,7 +98,7 @@ typedef union
     wiced_bt_ga_string_t                              bearer_provider_name; /**< Bearer Provider Name */
     wiced_bt_ga_string_t                              bearer_UCI; /**< Bearer UCI */
     wiced_bt_ga_tbs_bearer_technology_t               bearer_technology; /**< Bearer Technology */
-    wiced_bt_ga_string_t                              bearer_URI;/**< Bearer URI */
+    wiced_bt_ga_string_t                              bearer_URI_supported_schemes_list;/**< Bearer URI */
     uint8_t                                           bearer_signal_strength;/**< Bearer Signal Strength */
     uint8_t                                           bearer_signal_strength_reporting_interval;/**< Bearer Signal Strength Reporting Interval */
     uint16_t                                          status_flag; /**< supported flags */
@@ -106,7 +106,7 @@ typedef union
     uint8_t                                           content_control_id; /**< Content control ID */
     wiced_bt_ga_tbs_call_termination_reason_data_t    call_termination_reason;/**< Call termination reason */
     wiced_bt_ga_tbs_incoming_call_t                   incoming_call; /**< Incoming_remote_caller_id */
-    wiced_bt_ga_tbs_incoming_tg_caller_id_t           incoming_tg_caller_id; /**< Incoming target caller ID */
+    wiced_bt_ga_tbs_incoming_tg_bearer_uri_t           incoming_tg_caller_id; /**< Incoming target caller ID */
     wiced_bt_ga_tbs_current_call_list_t               current_call_list; /**< Current call list */
     wiced_bt_ga_tbs_call_control_point_t              call_action; /**< Call control point data */
     uint16_t                                          ccp_supported_opcode; /**< Supported opcode flags*/

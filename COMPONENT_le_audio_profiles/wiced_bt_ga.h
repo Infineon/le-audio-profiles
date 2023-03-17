@@ -1,5 +1,5 @@
 /*
- * Copyright 2022, Cypress Semiconductor Corporation (an Infineon company) or
+ * Copyright 2023, Cypress Semiconductor Corporation (an Infineon company) or
  * an affiliate of Cypress Semiconductor Corporation.  All rights reserved.
  *
  * This software, including source code, documentation and related
@@ -96,7 +96,17 @@ typedef enum {
     MCS_MEDIA_CONTROL_POINT_CHARACTERISTIC,             //10
     MCS_MEDIA_OPCODE_SUPPORTED_CHARACTERISTIC,          //11
     MCS_CONTENT_CONTROL_ID_CHARACTERISTIC,              //12
-    MCS_MAX_CHARACTERISTIC,                             //13
+    MCS_MEDIA_ICON_OBJECT_CHARACTERISTIC,               //13
+    MCS_MEDIA_ICON_URI_CHARACTERISTIC,                  //14
+    MCS_MEDIA_TRACK_SEGMENT_CHARACTERISTIC,             //15
+    MCS_MEDIA_CURRENT_TRACK_OBJ_CHARACTERISTIC,         //16
+    MCS_MEDIA_NEXT_TRACK_OBJ_CHARACTERISTIC,            //17
+    MCS_MEDIA_PARENT_GROUP_OBJ_CHARACTERISTIC,          //18
+    MCS_MEDIA_CURRENT_GROUP_OBJ_CHARACTERISTIC,         //19
+    MCS_MEDIA_SEARCH_RESULTS_OBJ_CHARACTERISTIC,        //20
+    MCS_MEDIA_SEARCH_CONTROL_POINT_CHARACTERISTIC,      //21
+    MCS_MEDIA_CONTENT_CONTROL_ID,                       //22
+    MCS_MAX_CHARACTERISTIC,                             //23
 } mcs_characteristics_t;
 
 typedef enum
@@ -104,13 +114,13 @@ typedef enum
     TBS_BEARER_PROVIDER_NAME_CHARACTERISTIC,                      //0
     TBS_BEARER_UCI_CHARACTERISTIC,                                //1
     TBS_BEARER_TECHNOLOGY_CHARACTERISTIC,                         //2
-    TBS_BEARER_URI_CHARACTERISTIC,                                //3
+    TBS_BEARER_URI_SUPPORTED_SCHEMES_CHARACTERISTIC,              //3
     TBS_BEARER_SIGNAL_STRENGTH_CHARACTERISTIC,                    //4
     TBS_BEARER_SIGNAL_STRENGTH_REPORTING_INTERVAL_CHARACTERISTIC, //5
-    TBS_BEARER_LIST_CURRENT_CALL_CHARACTERISTIC,                  //6
+    TBS_BEARER_LIST_CURRENT_CALLS_CHARACTERISTIC,                 //6
     TBS_CONTENT_CONTROL_ID_CHARACTERISTIC,                        //7
-    TBS_INCOMING_CALL_TG_CALLER_ID_CHARACTERISTIC,                //8
-    TBS_BEARER_STATUS_FLAGS_CHARACTERISTIC,                       //9
+    TBS_INCOMING_CALL_TG_BEARER_URI_CHARACTERISTIC,               //8
+    TBS_STATUS_FLAGS_CHARACTERISTIC,                              //9
     TBS_CALL_STATE_CHARACTERISTIC,                                //10
     TBS_CALL_CONTROL_POINT_CHARACTERISTIC,                        //11
     TBS_CALL_CONTROL_POINT_OPTIONAL_OPCODE_CHARACTERISTIC,        //12

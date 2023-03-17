@@ -1,5 +1,5 @@
 /*
- * Copyright 2022, Cypress Semiconductor Corporation (an Infineon company) or
+ * Copyright 2023, Cypress Semiconductor Corporation (an Infineon company) or
  * an affiliate of Cypress Semiconductor Corporation.  All rights reserved.
  *
  * This software, including source code, documentation and related
@@ -79,7 +79,7 @@ typedef struct
 
 wiced_bool_t wiced_bt_ga_bap_broadcast_is_broadcast_announcement(uint8_t *p_adv_data, uint32_t *p_br_id);
 
-wiced_result_t wiced_bt_ga_bap_broadcast_configure(uint8_t adv_handle, wiced_bt_ga_bap_broadcast_base_t *p_base);
+wiced_result_t wiced_bt_ga_bap_broadcast_configure(uint8_t adv_handle, wiced_bt_ga_bap_broadcast_base_t *p_base, uint8_t *p_ext_adv, uint8_t adv_len);
 
 wiced_bool_t wiced_bt_ga_bap_broadcast_is_basic_announcement(uint8_t *p_adv_data, uint8_t *p_base_len);
 
@@ -110,7 +110,13 @@ wiced_result_t wiced_bt_ga_bap_broadcast_reconfigure(uint8_t adv_sid, wiced_bt_g
  */
 wiced_result_t wiced_bt_ga_bap_broadcast_update_metadata(uint8_t adv_sid, wiced_bt_ga_bap_broadcast_base_t *p_base);
 
-wiced_result_t wiced_bt_ga_bap_broadcast_start_solicitation_requests(uint8_t adv_sid);
+wiced_result_t wiced_bt_ga_bap_broadcast_start_solicitation_requests(uint8_t adv_sid,
+                                                                     char *dev_name,
+                                                                     uint8_t name_length);
 
 uint8_t wiced_bt_ga_bap_broadcast_get_sampling_freq_index(uint32_t samplaing_freq);
 uint8_t wiced_bt_ga_bap_broadcast_get_fram_duration_index(uint32_t frame_duration);
+
+wiced_result_t wiced_bt_ga_bap_build_broadcast_annoncement_adv_data(uint8_t *p_data,
+                                                                    uint8_t *len,
+                                                                    uint32_t broadcast_id);

@@ -1,5 +1,5 @@
 /*
- * Copyright 2022, Cypress Semiconductor Corporation (an Infineon company) or
+ * Copyright 2023, Cypress Semiconductor Corporation (an Infineon company) or
  * an affiliate of Cypress Semiconductor Corporation.  All rights reserved.
  *
  * This software, including source code, documentation and related
@@ -53,7 +53,7 @@ extern "C"
 #include "wiced_bt_gatt.h"
 #include "wiced_result.h"
 #include "wiced_bt_trace.h"
-#include "wiced_bt_ga_uuid.h"
+
 #include "gatt_interface.h"
 #include "wiced_bt_ga.h"
 
@@ -83,10 +83,8 @@ typedef struct {
     uint8_t bass_max_receive_state_supported;
 } ga_cfg_t;
 
-typedef struct {
-    char* str;
-    uint32_t len;
-}wiced_bt_ga_string_t;
+
+typedef gatt_intf_string_t wiced_bt_ga_string_t;
 
 #define VOLUME_OFFSET_MIN_VALUE             -255
 #define VOLUME_OFFSET_MAX_VALUE             255
@@ -120,10 +118,10 @@ typedef enum
 
 typedef enum
 {
-    WICED_BT_GA_AICS_ERROR_INVALID_CHANGE_COUNTER = 0x80, /**< Change counter value is invalid*/
+    WICED_BT_GA_AICS_ERROR_INVALID_CHANGE_COUNTER = 0x80, /**< Change counter value is invalid */
     WICED_BT_GA_AICS_ERROR_OPCODE_NOT_SUPPORTED   = 0x81, /**< Opcode is invalid*/
     WICED_BT_GA_AICS_ERROR_MUTE_DISABLED          = 0x82, /**< Mute Disabled */
-    WICED_BT_GA_AICS_ERROR_VALUE_OUT_OF_RANGE     = 0x82, /**< Change counter value is invalid*/
+    WICED_BT_GA_AICS_ERROR_VALUE_OUT_OF_RANGE     = 0x83, /**< Gain setting valus is out of range */
     WICED_BT_GA_AICS_GAIN_MODE_CHANGE_NOT_ALLOWED = 0x84, /**< Gain Mode Change Not allowed */
 } wiced_bt_ga_aics_error_code_t;
 
@@ -149,7 +147,7 @@ typedef enum
     WICED_BT_GA_VCS_ERROR_OPCODE_NOT_SUPPORTED = 0x81, /**< Opcode is invalid*/
 } wiced_bt_ga_vcs_error_code_t;
 
-
+/** Definition for application error codes which can be sent by CSIS profile */
 typedef enum
 {
     WICED_BT_GA_CSIS_ERROR_LOCK_DENIED = 0x80,       /**< error Lock denied */
@@ -165,7 +163,6 @@ typedef enum
     WICED_BT_VOCS_LEFT_AUDIO,                       /**< Left Audio Location */
     WICED_BT_VOCS_RIGHT_AUDIO,                      /**< Right Audio Location */
 } wiced_bt_ga_volume_audio_location_t;
-
 
 /** @} GA_CLIENT_EVENT */
 

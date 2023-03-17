@@ -1,5 +1,5 @@
 /*
- * Copyright 2022, Cypress Semiconductor Corporation (an Infineon company) or
+ * Copyright 2023, Cypress Semiconductor Corporation (an Infineon company) or
  * an affiliate of Cypress Semiconductor Corporation.  All rights reserved.
  *
  * This software, including source code, documentation and related
@@ -34,7 +34,6 @@
 #pragma once
 
 #include "wiced_bt_ga.h"
-#include "wiced_bt_types.h"
 
 #define BAP_TRACE(...)
 #define BAP_TRACE_CRIT(...)
@@ -58,32 +57,34 @@
 #define BAP_BROADCAST_ID_SIZE                    3
 
 // Context Types
-#define BAP_CONTEXT_TYPE_PROHIBITED 0x0000        /**!< Prohibited */
-#define BAP_CONTEXT_TYPE_UNSPECIFIED 0x0001       /**!< Unspecified. Matches any audio context */
-#define BAP_CONTEXT_TYPE_CONVERSATIONAL                                                                                \
-    0x0002 /**!< Conversation between humans, for example, in telephony or video calls, including traditional cellular as well as VoIP and Push-to-Talk */
-#define BAP_CONTEXT_TYPE_MEDIA                                                                                         \
-    0x0004 /**!< Media, for example, music playback, radio, podcast or movie soundtrack, or tv audio */
-#define BAP_CONTEXT_TYPE_GAME                                                                                          \
-    0x0008 /**!< Audio associated with video gaming, for example gaming media; gaming effects; music and in-game voice chat between participants; or a mix of all the above */
-#define BAP_CONTEXT_TYPE_INSTRUCTIONAL                                                                                 \
-    0x0010 /**!< Instructional audio, for example, in navigation, announcements, or user guidance */
-#define BAP_CONTEXT_TYPE_VOICE_ASSISTANTS                                                                              \
-    0x0020 /**!< Man-machine communication, for example, with voice recognition or virtual assistants */
-#define BAP_CONTEXT_TYPE_LIVE                                                                                          \
-    0x0040 /**!< Live audio, for example, from a microphone where audio is perceived both through a direct acoustic path and through an LE Audio Stream */
-#define BAP_CONTEXT_TYPE_SOUND_EFFECT                                                                                  \
-    0x0080 /**!< Sound effects including keyboard and touch feedback; menu and user interface sounds; and other system sounds */
-#define BAP_CONTEXT_TYPE_NOTIFICATIONS                                                                                 \
-    0x100 /**!< Notification and reminder sounds; attention-seeking audio, for example, in beeps signaling the arrival of a message */
-#define BAP_CONTEXT_TYPE_RINGTONE                                                                                      \
-    0x0200 /**!< Alerts the user to an incoming call, for example, an incoming telephony or video call, including traditional cellular as well as VoIP and Push-to-Talk */
-#define BAP_CONTEXT_TYPE_ALERTS                                                                                        \
-    0x0400 /**!< Alarms and timers; immediate alerts, for example, in a critical battery alarm, timer expiry or alarm clock, toaster, cooker, kettle, microwave, etc */
-#define BAP_CONTEXT_TYPE_EMERGENCY_ALARM                                                                               \
-    0x0800 /**!< Emergency sounds, for example, fire alarms or other urgent alerts */
-
-#define BAP_CONTEXT_TYPE_TV 0x0200                /**!< Metadata conforming to the Bluetooth Broadcast TV profile */
+/**! Prohibited */
+#define BAP_CONTEXT_TYPE_PROHIBITED 0x0000
+/**! Unspecified. Matches any audio context */
+#define BAP_CONTEXT_TYPE_UNSPECIFIED 0x0001
+/**! Conversation between humans, for example, in telephony or video calls, including traditional cellular as well as VoIP and Push-to-Talk */
+#define BAP_CONTEXT_TYPE_CONVERSATIONAL 0x0002
+/**! Media, for example, music playback, radio, podcast or movie soundtrack, or tv audio */
+#define BAP_CONTEXT_TYPE_MEDIA 0x0004
+/**! Audio associated with video gaming, for example gaming media; gaming effects; music and in-game voice chat between participants; or a mix of all the above */
+#define BAP_CONTEXT_TYPE_GAME 0x0008
+/**! Instructional audio, for example, in navigation, announcements, or user guidance */
+#define BAP_CONTEXT_TYPE_INSTRUCTIONAL 0x0010
+/**! Man-machine communication, for example, with voice recognition or virtual assistants */
+#define BAP_CONTEXT_TYPE_VOICE_ASSISTANTS 0x0020
+/**! Live audio, for example, from a microphone where audio is perceived both through a direct acoustic path and through an LE Audio Stream */
+#define BAP_CONTEXT_TYPE_LIVE 0x0040
+/**! Sound effects including keyboard and touch feedback; menu and user interface sounds; and other system sounds */
+#define BAP_CONTEXT_TYPE_SOUND_EFFECT 0x0080
+/**! Notification and reminder sounds; attention-seeking audio, for example, in beeps signaling the arrival of a message */
+#define BAP_CONTEXT_TYPE_NOTIFICATIONS 0x100
+/**! Alerts the user to an incoming call, for example, an incoming telephony or video call, including traditional cellular as well as VoIP and Push-to-Talk */
+#define BAP_CONTEXT_TYPE_RINGTONE 0x0200
+/**! Alarms and timers; immediate alerts, for example, in a critical battery alarm, timer expiry or alarm clock, toaster, cooker, kettle, microwave, etc */
+#define BAP_CONTEXT_TYPE_ALERTS 0x0400
+/**! Emergency sounds, for example, fire alarms or other urgent alerts */
+#define BAP_CONTEXT_TYPE_EMERGENCY_ALARM 0x0800
+/**! Metadata conforming to the Bluetooth Broadcast TV profile */
+#define BAP_CONTEXT_TYPE_TV 0x0200
 
 #define VALID_CONTENT_TYPE_MASK 0x0FFF
 #define INVALID_CONTENT_TYPE_MASK 0xF000
@@ -136,8 +137,11 @@
 #define BAP_SUPPORTED_SAMPLING_FREQ_384_KHZ (1 << 12)     /*< Bit 12: 384,000 Hz */
 
 // frame durations
-#define BAP_SUPPORTED_FRAME_DURATION_7_5MS 0x01 // Bit 0: 7.5 ms frame duration supported.
-#define BAP_SUPPORTED_FRAME_DURATION_10MS 0x02  // Bit 1: 10 ms frame duration supported.
+#define BAP_SUPPORTED_FRAME_DURATION_7_5MS (1 << 0) // Bit 0: 7.5 ms frame duration supported.
+#define BAP_SUPPORTED_FRAME_DURATION_10MS (1 << 1)  // Bit 1: 10 ms frame duration supported.
+#define BAP_SUPPORTED_FRAME_DURATION_8_1MS (1 << 2) // Bit 2: 8.163 ms frame duration supported.
+#define BAP_SUPPORTED_FRAME_DURATION_10_8MS (1 << 3)    // Bit 1: 10.884 ms frame duration supported.
+
 // Valid only when 7.5 ms is supported and 10 ms is supported. Shall not be set to 0b1 any of (bit 5 or bit 6 or bit 7) is set to 0b1.
 #define BAP_SUPPORTED_FRAME_DURATION_7_5MS_PREFERRED 0x10 // Bit 4: 7.5 ms preferred.
 // Valid only when 7.5 ms is supported and 10 ms is supported. Shall not be set to 0b1 if any of (bit 4 or bit 5 or bit 7) is set to 0b1.
@@ -163,11 +167,13 @@
 #define BAP_SAMPLING_FREQ_384_KHz 0x0D
 
 // frame durations
-#define BAP_FRAME_DURATION_7_5 0x0
-#define BAP_FRAME_DURATION_10 0x1
+#define BAP_FRAME_DURATION_7_5 0x00
+#define BAP_FRAME_DURATION_10 0x01
+#define BAP_FRAME_DURATION_8163 0x02
+#define BAP_FRAME_DURATION_10884 0x03
 
-// Codec Specific Capabilities
-typedef enum
+    // Codec Specific Capabilities
+    typedef enum
 {
     BAP_CODEC_CAPABILITIES_INVALID_TYPE,
     BAP_CODEC_CAPABILITIES_SUPPORTED_SAMPLING_FREQUENCIES_TYPE,
@@ -196,7 +202,13 @@ typedef enum
     BAP_METADATA_INVALID_TYPE,
     BAP_METADATA_PREFERRED_AUDIO_CONTEXTS_TYPE,
     BAP_METADATA_STREAMING_AUDIO_CONTEXTS_TYPE,
-    BAP_METADATA_MAX_TYPE = BAP_METADATA_STREAMING_AUDIO_CONTEXTS_TYPE,
+    BAP_METADATA_PROGRAM_INFO,
+    BAP_METADATA_LANGUAGE,
+    BAP_METADATA_CCID_LIST,
+    BAP_METADATA_PARENTAL_RATING,
+    BAP_METADATA_PROGRAM_INFO_URI,
+    BAP_METADATA_MAX_TYPE = BAP_METADATA_PROGRAM_INFO_URI,
+    BAP_METADATA_EXTENDED_METADATA_TYPE = 0xFE,
     BAP_METADATA_VENDOR_SPECIFIC_TYPE = 0xFF,
 } wiced_bt_ga_bap_metadata_type_t;
 
@@ -218,6 +230,7 @@ typedef struct
 
 typedef struct
 {
+    wiced_bool_t metadata_present;
     uint16_t preferred_audio_ctx;
     uint16_t streaming_audio_ctx;
     uint8_t *p_vendor_specific_data;
@@ -225,6 +238,55 @@ typedef struct
     uint8_t *p_upper_layer_data;
     uint8_t upper_layer_data_length;
 } wiced_bt_ga_bap_metadata_t;
+
+typedef struct
+{
+    uint8_t audio_channels;
+    uint32_t sampling_frequency;
+    uint32_t frame_duration;
+    uint16_t octets_per_codec_frame;
+    wiced_bt_isoc_framing_t framing;
+    uint8_t retransmission_number;
+    uint8_t max_transport_latency;
+} wiced_bt_ga_bap_stream_config_t;
+
+typedef enum
+{
+    BAP_CODEC_CONFIG_8_1_1,
+    BAP_CODEC_CONFIG_8_1_2,
+    BAP_CODEC_CONFIG_8_2_1,
+    BAP_CODEC_CONFIG_8_2_2,
+    BAP_CODEC_CONFIG_16_1_1,
+    BAP_CODEC_CONFIG_16_1_2,
+    BAP_CODEC_CONFIG_16_2_1,
+    BAP_CODEC_CONFIG_16_2_2,
+    BAP_CODEC_CONFIG_24_1_1,
+    BAP_CODEC_CONFIG_24_1_2,
+    BAP_CODEC_CONFIG_24_2_1,
+    BAP_CODEC_CONFIG_24_2_2,
+    BAP_CODEC_CONFIG_32_1_1,
+    BAP_CODEC_CONFIG_32_1_2,
+    BAP_CODEC_CONFIG_32_2_1,
+    BAP_CODEC_CONFIG_32_2_2,
+    BAP_CODEC_CONFIG_441_1_1,
+    BAP_CODEC_CONFIG_441_1_2,
+    BAP_CODEC_CONFIG_441_2_1,
+    BAP_CODEC_CONFIG_441_2_2,
+    BAP_CODEC_CONFIG_48_1_1,
+    BAP_CODEC_CONFIG_48_1_2,
+    BAP_CODEC_CONFIG_48_2_1,
+    BAP_CODEC_CONFIG_48_2_2,
+    BAP_CODEC_CONFIG_48_3_1,
+    BAP_CODEC_CONFIG_48_3_2,
+    BAP_CODEC_CONFIG_48_4_1,
+    BAP_CODEC_CONFIG_48_4_2,
+    BAP_CODEC_CONFIG_48_5_1,
+    BAP_CODEC_CONFIG_48_5_2,
+    BAP_CODEC_CONFIG_48_6_1,
+    BAP_CODEC_CONFIG_48_6_2,
+}wiced_bt_ga_bap_codec_config_t;
+
+typedef uint8_t wiced_bt_bap_broadcast_code_t[BAP_BROADCAST_CODE_SIZE]; /**< BLE database hash */
 
 wiced_bool_t wiced_bt_ga_bap_is_state_transition_valid(ascs_characteristics_t char_type,
                                                        uint8_t ase_state,
@@ -249,10 +311,16 @@ uint8_t *wiced_bt_ga_bap_fill_csc(uint8_t *p_dst, const wiced_bt_ga_bap_csc_t *a
 
 wiced_result_t wiced_bt_ga_bap_parse_csc(uint8_t *stream, int stream_len, wiced_bt_ga_bap_csc_t *p_csc);
 
-wiced_result_t wiced_bt_ga_bap_get_metadata(uint8_t *stream, int stream_len, wiced_bt_ga_bap_metadata_t *p_metadata);
+wiced_result_t wiced_bt_ga_bap_get_metadata(uint8_t *stream,
+                                            int stream_len,
+                                            wiced_bt_ga_bap_metadata_t *p_metadata,
+                                            uint32_t *response,
+                                            uint32_t *reason);
 
 uint8_t *wiced_bt_ga_bap_fill_metadata(uint8_t *p_dst, wiced_bt_ga_bap_metadata_t *p_metadata);
 
 uint8_t wiced_bt_ga_bap_get_sampling_freq_index(uint32_t samplaing_freq);
 
 uint8_t wiced_bt_ga_bap_get_fram_duration_index(uint32_t frame_duration);
+
+void wiced_bt_ga_bap_get_stream_config(uint32_t codec_config, wiced_bt_ga_bap_stream_config_t *p_stream_config);

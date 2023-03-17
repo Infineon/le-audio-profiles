@@ -1,5 +1,5 @@
 /*
- * Copyright 2022, Cypress Semiconductor Corporation (an Infineon company) or
+ * Copyright 2023, Cypress Semiconductor Corporation (an Infineon company) or
  * an affiliate of Cypress Semiconductor Corporation.  All rights reserved.
  *
  * This software, including source code, documentation and related
@@ -65,7 +65,6 @@ typedef union
     wiced_bt_ga_aics_data_t aics_data;          /**< AICS Status data */
 } wiced_bt_ga_microphone_control_client_status_data_t;
 
-    
 extern const gatt_intf_service_methods_t mics_methods;
 
 #ifdef __cplusplus

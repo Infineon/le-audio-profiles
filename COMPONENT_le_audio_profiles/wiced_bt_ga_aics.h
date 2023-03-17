@@ -1,5 +1,5 @@
 /*
- * Copyright 2022, Cypress Semiconductor Corporation (an Infineon company) or
+ * Copyright 2023, Cypress Semiconductor Corporation (an Infineon company) or
  * an affiliate of Cypress Semiconductor Corporation.  All rights reserved.
  *
  * This software, including source code, documentation and related
@@ -154,7 +154,7 @@ wiced_bt_gatt_status_t aics_notify(uint16_t conn_id,
  * @param[in] p_char : characteristic to be written
  * @param[in] p_data : characteristic data to be written 
  */
-wiced_bt_gatt_status_t aics_write_characteristic(uint16_t conn_id,
+wiced_bt_gatt_status_t aics_write_remote_attribute(uint16_t conn_id,
                                                  gatt_intf_service_object_t *p_service,
                                                  gatt_intf_attribute_t *p_char,
                                                  void *p_data);

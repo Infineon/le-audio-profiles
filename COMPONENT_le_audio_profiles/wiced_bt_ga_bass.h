@@ -1,5 +1,5 @@
 /*
- * Copyright 2022, Cypress Semiconductor Corporation (an Infineon company) or
+ * Copyright 2023, Cypress Semiconductor Corporation (an Infineon company) or
  * an affiliate of Cypress Semiconductor Corporation.  All rights reserved.
  *
  * This software, including source code, documentation and related
@@ -130,7 +130,7 @@ typedef struct
 typedef struct
 {
     uint8_t source_id; /**< Source_ID assigned by the server to a Broadcast Receive State characteristic */
-    uint8_t broadcast_code[BAP_BROADCAST_CODE_SIZE]; /**< Broadcast_Code for the Source_ID assigned to
+    wiced_bt_bap_broadcast_code_t broadcast_code; /**< Broadcast_Code for the Source_ID assigned to
         a Broadcast Receive State characteristic */
 } wiced_bt_ga_bass_set_broadcast_code_data_t;
 
@@ -153,7 +153,7 @@ typedef struct
     uint32_t broadcast_id;              /**< Broadcast_ID of the Broadcast Source */
     wiced_bt_ga_bass_pa_sync_state_t pa_sync_state;               /**< PA Sync State */
     wiced_bt_ga_bass_big_encryption_state_t big_encryption_state; /**< BIG Encryption State */
-    uint8_t broadcast_code[BAP_BROADCAST_CODE_SIZE];              /**< Broadcast_Code that fails to decrypt the BIG.
+    wiced_bt_bap_broadcast_code_t broadcast_code;                 /**< Broadcast_Code that fails to decrypt the BIG.
     Valid Only if big_encryption_state=WICED_BT_GA_BASS_BIG_BAD_BROADCAST_CODE */
     uint8_t num_subgroup;                                         /**< Number of subgroups */
     wiced_bt_ga_bass_sub_group_data_t *sub_group_data;            /**< Subgroup Data */

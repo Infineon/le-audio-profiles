@@ -1,5 +1,5 @@
 /*
- * Copyright 2022, Cypress Semiconductor Corporation (an Infineon company) or
+ * Copyright 2023, Cypress Semiconductor Corporation (an Infineon company) or
  * an affiliate of Cypress Semiconductor Corporation.  All rights reserved.
  *
  * This software, including source code, documentation and related
@@ -261,5 +261,5 @@ void wiced_bt_ga_ascs_send_receiver_start_stop_ready(uint16_t conn_id,
                                                      uint8_t ase_id,
                                                      wiced_bool_t is_start_ready);
 
-extern char ascs_opcode_str[][50];
-extern char ascs_state_str[][50];
+extern const char *ascs_opcode_str[];
+extern const char *ascs_state_str[];

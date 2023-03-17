@@ -1,5 +1,5 @@
 /*
- * Copyright 2022, Cypress Semiconductor Corporation (an Infineon company) or
+ * Copyright 2023, Cypress Semiconductor Corporation (an Infineon company) or
  * an affiliate of Cypress Semiconductor Corporation.  All rights reserved.
  *
  * This software, including source code, documentation and related
@@ -62,13 +62,13 @@ extern "C"
  * @anchor TBS_MAX_SUPPORTED_LEN
  * @name TBS max supported len
  * @{ */
-#define WICED_BT_GA_TBS_BEARER_NAME_MAX_SIZE          20 /**< Max Bearer name size supported*/
-#define WICED_BT_GA_TBS_BEARER_UCI_MAX_SIZE           20 /**< Max Uniform Caller Identifier size supported*/
-#define WICED_BT_GA_TBS_BEARER_URI_MAX_SIZE           20 /**< Max Uniform Resource Intentifier size supported*/
+#define WICED_BT_GA_TBS_BEARER_NAME_MAX_SIZE          50 /**< Max Bearer name size supported*/
+#define WICED_BT_GA_TBS_BEARER_UCI_MAX_SIZE           50 /**< Max Uniform Caller Identifier size supported*/
+#define WICED_BT_GA_TBS_BEARER_URI_MAX_SIZE           50 /**< Max Uniform Resource Intentifier size supported*/
 #define MAX_DATA_LEN                                  100/**< Max data length supported */
-#define WICED_BT_GA_TBS_RM_CALLERID_MAX_SIZE          30 /**< Max size of uri prefix and remote caller id*/
-#define WICED_BT_GA_TBS_TG_CALLERID_MAX_SIZE          30 /**< Max size of target caller id*/
-#define WICED_BT_GA_TBS_FRIENDLY_NAME_MAX_SIZE        30 /**< Max size of call friendly name*/
+#define WICED_BT_GA_TBS_RM_CALLERID_MAX_SIZE          50 /**< Max size of uri prefix and remote caller id*/
+#define WICED_BT_GA_TBS_TG_CALLERID_MAX_SIZE          50 /**< Max size of target caller id*/
+#define WICED_BT_GA_TBS_FRIENDLY_NAME_MAX_SIZE        50 /**< Max size of call friendly name*/
 #define WICED_BT_GA_TBS_BEARER_MAX_CALL_COUNT         5  /**< Max call count suppoorted */
 /** @} TBS_MAX_SUPPORTED_LEN */
 
@@ -183,7 +183,7 @@ typedef struct
 {
     uint8_t                 call_id;    /**< Call id of the call*/
     wiced_bt_ga_string_t    target_caller_id; /**< remote caller id consisting of uri prefix and caller id*/
-} wiced_bt_ga_tbs_incoming_tg_caller_id_t;
+} wiced_bt_ga_tbs_incoming_tg_bearer_uri_t;
 
 /** call state data */
 typedef struct

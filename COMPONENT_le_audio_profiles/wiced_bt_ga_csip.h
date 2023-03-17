@@ -1,5 +1,5 @@
 /*
- * Copyright 2022, Cypress Semiconductor Corporation (an Infineon company) or
+ * Copyright 2023, Cypress Semiconductor Corporation (an Infineon company) or
  * an affiliate of Cypress Semiconductor Corporation.  All rights reserved.
  *
  * This software, including source code, documentation and related
@@ -66,9 +66,9 @@ extern "C"
 #define WICED_BT_GA_CSIP_SET_MEMBER_DISCOVERY_TIMEOUT_IN_SEC      10 //10 seconds
 
 /** Ordered Access complete callback to be set by the application, this will be invoked once the ordered access procedure is complete */
-typedef wiced_bt_gatt_status_t(*wiced_bt_ordered_access_procedure_cmpl_cb)(gatt_intf_service_object_t* p_csip_inst, wiced_bool_t status);
+typedef wiced_bt_gatt_status_t(*wiced_bt_ordered_access_procedure_cmpl_cb)(gatt_intf_service_object_t* p_csip_inst, void *data, wiced_bool_t status);
 /** Lock procedure complete callback to be set by the application, this will be invoked once the lock procedure is complete */
-typedef wiced_bt_gatt_status_t(*wiced_bt_lock_procedure_cmpl_cb)(gatt_intf_service_object_t* p_csip_inst, wiced_bool_t status);
+typedef wiced_bt_gatt_status_t(*wiced_bt_lock_procedure_cmpl_cb)(gatt_intf_service_object_t* p_csip_inst, void *data, wiced_bool_t status);
 
 /** CSIP set entry per set memeber */
 typedef struct {
@@ -131,11 +131,13 @@ wiced_bt_gatt_status_t wiced_bt_ga_csip_request_lock(uint16_t conn_id, gatt_intf
 * @param[in]   num_instances : number of client instances sent
 * @param[in]   lock_val : lock value to be set
 * @param[in]   cb : callback returned when the complete lock procedure is completed
+* @param[in]   data pointer : this will be return in given cb
 */
 wiced_bt_gatt_status_t wiced_bt_ga_csip_start_lock_procedure(wiced_bt_ga_csip_set_entry *p_set,
                                                              int num_instances,
                                                              wiced_bt_ga_csis_lock_val_t lock_val,
-                                                             wiced_bt_lock_procedure_cmpl_cb cb);
+                                                             wiced_bt_lock_procedure_cmpl_cb cb,
+                                                             void *data);
 
 /**
 * \brief Ordered Access Procedure
@@ -145,8 +147,9 @@ wiced_bt_gatt_status_t wiced_bt_ga_csip_start_lock_procedure(wiced_bt_ga_csip_se
 * @param[in]   p_set : csip set memeber entries to be locked
 * @param[in]   num_instances : number of client instances sent
 * @param[in]   cb : callback returned when the complete ordered access procedure is completed
+* @param[in]   data pointer : this swill be return in given cb
 */
-void wiced_bt_ga_csip_start_ordered_access_procedure(wiced_bt_ga_csip_set_entry* p_set, int num_instances, wiced_bt_ordered_access_procedure_cmpl_cb cb);
+void wiced_bt_ga_csip_start_ordered_access_procedure(wiced_bt_ga_csip_set_entry* p_set, int num_instances, wiced_bt_ordered_access_procedure_cmpl_cb cb, void *data);
 
 /**@} wiced_bt_ga_csip */
 /**@} Coordinate_Set_APIs */
